@@ -2,6 +2,7 @@
 
 {% if strings %}
 import Foundation
+import Localize_Swift
 
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
@@ -30,10 +31,10 @@ extension {{enumName}}: CustomStringConvertible {
     }
   }
 
-  private static func tr(key: String, _ args: CVarArgType...) -> String {
-    let format = NSLocalizedString(key, comment: "")
-    return String(format: format, locale: NSLocale.currentLocale(), arguments: args)
-  }
+
+   private static func tr(key: String, _ args: CVarArgType...) -> String {
+       return String(format: key.localized(), arguments: args)
+   }
 }
 
 func tr(key: {{enumName}}) -> String {
